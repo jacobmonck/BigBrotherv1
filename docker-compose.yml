@@ -1,23 +1,43 @@
 version: "2"
 
 services:
+  api:
+    build:
+      context: .
+      dockerfile: API.Dockerfile
+    restart: always
+    ports:
+      - 8080:8080
+    links:
+      - postgres
+      - redis
+    depends_on:
+      - postgres
+      - redis
+
   bot:
     build:
       context: .
-      dockerfile: Bot.dockerfile
+      dockerfile: Bot.Dockerfile
     restart: always
-
-  database:
+    depends_on:
+      - api
+  
+  postgres:
     image: postgres
     restart: always
     environment:
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: root
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
       POSTGRES_DB: bigbrother
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - ./pg_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
   
   redis:
     image: redis
     restart: always
+    ports:
+      - 6379:6379
