@@ -11,6 +11,12 @@ disnake = "^2.4.0"
 loguru = "^0.6.0"
 taskipy = "^1.10.1"
 aioredis = "^2.0.1"
+fastapi = "^0.75.1"
+ormar = "^0.11.0"
+alembic = "^1.7.7"
+asyncpg = "^0.25.0"
+psycopg2-binary = "^2.9.3"
+uvicorn = "^0.17.6"
 
 [tool.poetry.dev-dependencies]
 black = "^22.1.0"
@@ -20,7 +26,8 @@ isort = "^5.10.1"
 line-length = 120
 
 [tool.taskipy.tasks]
-start = "python -m src.bot"
+bot = "python -m src.bot"
+api = "uvicorn src.api.__main__:app --host 0.0.0.0 --port 8080"
 lint = "black . && isort --profile black ."
 
 [build-system]

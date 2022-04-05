@@ -1,3 +1,3 @@
 # BigBrother
 
-BigBrother is simple yet super helpful bot that allows for large servers to log their member's messages to allow for search and help moderators productivity.
+A simple yet useful bot designed for large server to help aid moderation by allowing moderators quick and easy access to user's messages via Discord's search feature. 
