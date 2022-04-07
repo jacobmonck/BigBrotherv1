@@ -1,4 +1,4 @@
-from ormar import JSON, Integer, Model
+from ormar import JSON, BigInteger, Model
 
 from . import database, metadata
 
@@ -9,5 +9,5 @@ class Guild(Model):
         metadata = metadata
         database = database
 
-    id: int = Integer(primary_key=True)
+    id: int = BigInteger(primary_key=True)
     data: dict = JSON()

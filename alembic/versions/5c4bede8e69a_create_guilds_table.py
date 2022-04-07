@@ -19,7 +19,7 @@ depends_on = None
 def upgrade():
     op.create_table(
         "guilds",
-        sa.Column("id", sa.Integer, primary_key=True, nullable=False),
+        sa.Column("id", sa.BigInteger, primary_key=True, nullable=False),
         sa.Column("data", sa.JSON, nullable=False),
     )
 
