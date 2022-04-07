@@ -1,6 +1,5 @@
 from asyncpg import UniqueViolationError
 from fastapi import APIRouter, Request, Response
-from loguru import logger
 from orjson import dumps, loads
 from ormar.exceptions import NoMatch
 
