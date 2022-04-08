@@ -1,5 +1,4 @@
-from os import environ, getenv
-from typing import Any
+from os import environ
 
 from aioredis import from_url
 from disnake import Intents
@@ -18,7 +17,7 @@ class Bot(AutoShardedBot):
     def __init__(self, *args, **kwargs) -> None:
         super().__init__(command_prefix=environ["BOT_PREFIX"], intents=intents, *args, **kwargs)
 
-        self.redis = from_url(getenv("REDIS_URI"))
+        self.redis = from_url(environ["REDIS_URI"])
 
         self.api = APIClient()
 
