@@ -38,4 +38,4 @@ class Bot(AutoShardedBot):
     def run(self) -> None:
         logger.info("Starting bot...")
 
-        super().run(getenv("BOT_TOKEN"))
+        super().run(environ["BOT_TOKEN"])
