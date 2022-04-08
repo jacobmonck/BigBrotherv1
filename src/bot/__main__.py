@@ -8,7 +8,7 @@ load_dotenv()
 def main() -> None:
     bot = Bot()
 
-    for ext in []:
+    for ext in ["src.bot.exts.bigbrother"]:
         bot.load_extension(ext)
 
     bot.run()
