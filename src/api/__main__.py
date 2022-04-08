@@ -18,7 +18,6 @@ if not API_TOKEN:
 app = FastAPI(
     title="BigBrother Internal API",
     description="This API is used for the BigBrother Discord Bot to connect the internal services together.",
-    prefix="/v1",
 )
 app.include_router(guilds_router)
 

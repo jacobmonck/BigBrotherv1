@@ -5,7 +5,7 @@ from ormar.exceptions import NoMatch
 
 from src.api.impl.database import Guild
 
-router = APIRouter(prefix="/guilds")
+router = APIRouter(prefix="/v1/guilds")
 
 
 @router.get("/{guild_id}", response_model=Guild)
