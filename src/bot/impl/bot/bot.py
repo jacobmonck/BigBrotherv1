@@ -1,10 +1,12 @@
-from os import getenv
+from os import environ, getenv
 from typing import Any
 
 from aioredis import from_url
 from disnake import Intents
 from disnake.ext.commands import AutoShardedBot
 from loguru import logger
+
+from src.utils import APIClient
 
 intents = Intents.none()
 intents.guilds = True
@@ -14,9 +16,11 @@ intents.webhooks = True
 
 class Bot(AutoShardedBot):
     def __init__(self, *args, **kwargs) -> None:
-        super().__init__(intents=intents, *args, **kwargs)
+        super().__init__(command_prefix=environ["BOT_PREFIX"], intents=intents, *args, **kwargs)
 
         self.redis = from_url(getenv("REDIS_URI"))
+
+        self.api = APIClient()
 
     @staticmethod
     async def on_shard_connect(shard_id: int) -> None:
